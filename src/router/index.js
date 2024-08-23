@@ -6,7 +6,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 // import TestComponent from '@/components/TestComponent.vue';
 
 
-import { practiceRouter } from './practicRouter'
 import { memberRouter } from './memberRouter'
 import { productRouter } from './productRouter'
 import { orderRouter } from './orderRouter';
@@ -18,7 +17,6 @@ const routes = [
     //     name: 'HOME',
     //     component: HomeComponent
     // },
-    ...practiceRouter,
     ...memberRouter,
     ...productRouter,
     ...orderRouter

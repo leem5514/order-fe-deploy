@@ -45,37 +45,35 @@
 
 <script>
 import axios from 'axios';
-//import { push } from 'core-js/core/array';
-    export default{
-        data(){
-            return {
-                name:"",
-                category:"",
-                price:"",
-                stockQuantity: null,
-                productImage:null
+
+export default{
+    data(){
+        return{
+            name: "",
+            category: "",
+            price: null,
+            stockQuantity: null,
+        }
+    },
+    methods:{
+        async productCreate(){
+            try {
+                let registerData = new FormData();
+                registerData.append("name", this.name);
+                registerData.append("category", this.category);
+                registerData.append("price", this.price);
+                registerData.append("stockQuantity", this.stockQuantity);
+                registerData.append("productImage", this.productImage);
+
+                await axios.post(`${process.env.VUE_APP_API_BASE_URL}/product/create`, registerData); 
+                this.$router.push('/product/manage');
+            } catch (error) {
+                alert("상품 등록에 실패했습니다.");
             }
         },
-        methods:{
-            async productCreate() {
-                try{
-                    
-                    let registerData = new FormData();
-                    registerData.append("name", this.name);
-                    registerData.append("category", this.category);
-                    registerData.append("price", this.price);
-                    registerData.append("stockQuantity", this.stockQuantity);
-                    registerData.append("productImage", this.productImage);
-                    await axios.get(`${process.env.VUE_APP_API_BASIC_URL}/product/create`, registerData);
-                    this.$router.push('/postlist/manage')
-                } catch(e) {
-                    alert("상품등록에 실패하였습니다");
-                }
-                 
-            },
-            fileUpdate(event){
-                this.productImage = event.target.files[0]
-            }
+        fileUpdate(event){
+            this.productImage = event.target.files[0]
         }
     }
+}
 </script>
