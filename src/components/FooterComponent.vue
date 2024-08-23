@@ -1,7 +1,7 @@
 <template>
-    <div class="content-container mb-10">
+  <div class="content-container mb-10">
 
-    </div>
+
     <v-footer app class="text-center">
       <v-row justify="center">
         <v-col cols="12" class="text-center">
@@ -9,7 +9,8 @@
         </v-col>
       </v-row>
     </v-footer>
-  </template>
+  </div>
+</template>
   
   <script>
   export default {

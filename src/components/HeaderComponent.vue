@@ -12,10 +12,12 @@
                 </v-col>
 
                 <v-col class="text-center">
-                    <v-btn :to="{ path: '/' }">java shop</v-btn>
+                    <v-btn :to="{ path: '/' }">java shop222222222222222222</v-btn>
                 </v-col>
+                
                 <v-col class="d-flex justify-end">
                     <v-btn v-if="isLogin" :to="{ path: '/order/cart' }">장바구니({{ getCartItemCount }})</v-btn>
+
                     <v-btn :to="{ path: '/product/list' }">상품목록</v-btn>
                     <v-btn v-if="isLogin" :to="{ path: '/mypage' }">MyPage</v-btn>
                     <v-btn v-if="!isLogin" :to="{ path: '/member/create' }">회원가입</v-btn>
