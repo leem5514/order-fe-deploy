@@ -1,24 +1,20 @@
 <template>
     <v-dialog max-width="500px">
         <v-card>
-            <v-card-title class="text-h5 text-center">비밀번호 변경</v-card-title>
+            <v-card-title class="text-h5 text-center">
+                비밀번호 변경하기
+            </v-card-title>
             <v-card-text>
                 <v-form @submit.prevent="resetPassword">
-                    <v-text-field label="email" v-model="email" type="email" prepend-icon="mdi-email" required>
-                    </v-text-field>
-                    <v-text-field label="기존 비밀번호" v-model="asIsPassword" type="password" required
-                        prepend-icon="mdi-lock">
-                    </v-text-field>
-                    <v-text-field label="신규 비밀번호" v-model="toBePassword" type="password" required
-                        prepend-icon="mdi-lock">
-                    </v-text-field>
-                    <v-btn type="submit" color="primary" block>비밀번호 재설정</v-btn>
-                    <v-btn color="red" @click="closeModal" block>닫기</v-btn>
+                    <v-text-field label="email" type="email" v-model="email" prepend-icon="mdi-email" required></v-text-field>
+                    <v-text-field label="old password" type="password" v-model="asIsPassword" prepend-icon="mdi-lock" required></v-text-field>
+                    <v-text-field label="new password" type="password" v-model="toBePassword" prepend-icon="mdi-lock" required></v-text-field>
+                    <v-btn type="submit" style="background-color:cornsilk;" block > 비밀번호 변경하기 </v-btn>
+                    <v-btn @click="closeModal" style="background-color:aliceblue;" block > 닫기 </v-btn>
                 </v-form>
             </v-card-text>
         </v-card>
     </v-dialog>
-
 </template>
 
 <script>
