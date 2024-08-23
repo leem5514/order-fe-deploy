@@ -49,7 +49,7 @@ export default {
                 { title: '회원EMAIL', key: 'memberEmail', align: 'center' },
                 { title: '주문상태', key: 'orderStatus', align: 'center' },
                 { title: 'ACTION', key: 'actions', align:'start'},
-            ]
+            ],
         }
     },
     async created() {
