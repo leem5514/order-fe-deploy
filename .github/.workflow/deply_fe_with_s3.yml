@@ -37,3 +37,10 @@ jobs:
 					
 			- name: clear s3 bucket
 				run: aws s3 rm s3://www.dding.shop/ --recursive
+
+      - name: deploy to s3
+        run: aws s3 cp ./dist s3://www.dding.shop/ --recursive
+
+      - name: invalidate cloudfront caches
+        run: aws cloudfront create-invalidation --distribution-id E3QD9BWA24CWV5 --paths "/*"
+
