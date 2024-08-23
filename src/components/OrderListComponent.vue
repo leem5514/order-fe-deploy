@@ -67,7 +67,7 @@ export default {
     methods:{
         async cancelOrder(id) {
             try {
-                await axios.patch(`${process.env.VUE_APP_API_BASIC_URL}/order/${id}/cancel`)
+                await axios.patch(`${process.env.VUE_APP_API_BASIC_URL}/order/${id}/cancel`);
                 window.location.reload();
             } catch(e) {
                 console.log(e)

@@ -23,10 +23,11 @@
             </v-row>
           </v-form>
         </v-col>
-        <v-col v-if="!isAdmin" cols="auto">
-          <v-btn color="secondary" class="mr-2">장바구니</v-btn>
-          <v-btn color="success" @click="createOrder">주문하기</v-btn>
+        <v-col cols="auto" v-if="!isAdmin" :style="{marginTop:'10px'}">
+            <v-btn class="mr-2" @click="addCart" style="background-color:bule;">장바구니</v-btn>
+            <v-btn @click="createOrder" style="background-color:blue;">주문하기</v-btn>
         </v-col>
+        
         <v-col v-if="isAdmin" cols="auto">
           <v-btn href="/product/create" color="success">상품등록</v-btn>
         </v-col>
