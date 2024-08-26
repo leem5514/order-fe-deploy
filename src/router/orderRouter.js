@@ -1,5 +1,5 @@
-import OrderList from "@/views/OrderList.vue"
-import OrderCart from "@/views/OrderCart.vue"
+import OrderList from "../views/OrderList.vue"
+import OrderCart from "../views/OrderCart.vue"
 export const orderRouter = [
     {
         path: '/order/list',

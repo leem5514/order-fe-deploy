@@ -23,7 +23,7 @@
     <OrderListComponent :isAdmin="false"/>
 </template>
 <script>
-import OrderListComponent from '@/components/OrderListComponent.vue';
+import OrderListComponent from '../components/OrderListComponent.vue';
 import axios from 'axios';
 export default {
     components:{

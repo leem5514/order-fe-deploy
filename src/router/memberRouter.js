@@ -1,9 +1,9 @@
-import MemberCreate from '@/views/MemberCreate.vue'
-import LoginPage from '@/views/LoginPage.vue'
-import LogoutPage from '@/views/LogoutPage.vue'
-import MyPage from '@/views/MyPage.vue'
-import OrderCart from '@/views/OrderCart.vue'
-import MemberList from '@/views/MemberList.vue'
+import MemberCreate from '../views/MemberCreate.vue'
+import LoginPage from '../views/LoginPage.vue'
+import LogoutPage from '../views/LogoutPage.vue'
+import MyPage from '../views/MyPage.vue'
+import OrderCart from '../views/OrderCart.vue'
+import MemberList from '../views/MemberList.vue'
 
 
 

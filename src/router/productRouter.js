@@ -1,6 +1,6 @@
-import ProductList from '@/views/ProductList.vue'
-import ProductListManage from '@/views/ProductListManage.vue'
-import ProductCreate from '@/views/ProductCreate.vue'
+import ProductList from '../views/ProductList.vue'
+import ProductListManage from '../views/ProductListManage.vue'
+import ProductCreate from '../views/ProductCreate.vue'
 
 export const productRouter = [
     {
