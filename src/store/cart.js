@@ -1,35 +1,35 @@
 function initState() {
     return {
         //로컬스토리지에서 데이터 추출
-        productsInCart: JSON.parse(localStorage.getItem('productsInCart')|| []), 
-        totalQuantity: localStorage.getItem('productsInCart')|| 0,
+        productsInCart: JSON.parse(localStorage.getItem('productsInCart') || '[]'),
+        totalQuantity: parseInt(localStorage.getItem('totalQuantity') || '0', 10),
     }
 }
 
-const practice={
+const cart = {
     state: initState,
-    mutations: {    
+    mutations: {
         addCart(state, product) {
-            const existProducts = state.productsInCart.find(p => p,id == product.id);
-            if(existProducts) {
-                existProduct.quantity +=product.quantity;
-            } else{
+            const existProduct = state.productsInCart.find(p => p.id == product.id);
+            if (existProduct) {
+                existProduct.quantity += product.quantity;
+            } else {
                 state.productsInCart.push(product);
             }
             state.totalQuantity = parseInt(state.totalQuantity) + product.quantity;
             //로컬스토리지에서 데이터 직렬화 -> 삽입
-            localStorage.setItem('porductsInCart', JSON.stringify(state.productsInCart));
+            localStorage.setItem('productsInCart', JSON.stringify(state.productsInCart));
             localStorage.setItem('totalQuantity', state.totalQuantity);
         },
         clearCart(state) {
             state.productsInCart = [];
             state.totalQuantity = 0;
-            localStorage.removeItem('porductsInCart');
+            localStorage.removeItem('productsInCart');
             localStorage.removeItem('totalQuantity');
         }
     },
-    actions:{
-        addCart(context, product){
+    actions: {
+        addCart(context, product) {
             context.commit('addCart', product)
         },
         clearCart(context) {
@@ -39,8 +39,9 @@ const practice={
 
     getters: {
         getTotalQuantity: state => state.totalQuantity,
+        getCartItemCount: state => state.productsInCart.length,
         getProductsInCart: state => state.productsInCart,
     }
 }
 
-export default practice;
+export default cart;

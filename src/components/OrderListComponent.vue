@@ -13,7 +13,7 @@
                     show-expand
                     >
                     <template v-slot:[`item.actions`]="{item}">
-                        <v-btn color="red" v-if="isAdmin && item.orderStatus === 'ORDERED'" @click.stop="cancelOrder(item.id)" size=small>
+                        <v-btn color="error" variant="outlined" v-if="isAdmin && item.orderStatus === 'ORDERED'" @click.stop="cancelOrder(item.id)" size="small">
                             CANCEL
                         </v-btn>
                     </template>

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "order-fe-deploy",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vue-cli-service", "serve", "--port", "8092"],
+      "port": 8092
+    }
+  ]
+}

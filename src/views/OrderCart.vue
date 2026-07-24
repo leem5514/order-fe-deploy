@@ -7,10 +7,10 @@
         </v-row>
         <v-row justify="space-between">
             <v-col cols="auto">
-                <v-btn @click="clearCart" style="background-color: secondary">장바구니 비우기</v-btn>
+                <v-btn variant="outlined" color="secondary" @click="clearCart">장바구니 비우기</v-btn>
             </v-col>
             <v-col cols="auto">
-                <v-btn @click="orderCreate" style="background-color: primary">주문하기</v-btn>
+                <v-btn color="primary" @click="orderCreate">주문하기</v-btn>
             </v-col>
         </v-row>
         <v-row>

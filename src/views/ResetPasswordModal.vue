@@ -9,8 +9,8 @@
                     <v-text-field label="email" type="email" v-model="email" prepend-icon="mdi-email" required></v-text-field>
                     <v-text-field label="old password" type="password" v-model="asIsPassword" prepend-icon="mdi-lock" required></v-text-field>
                     <v-text-field label="new password" type="password" v-model="toBePassword" prepend-icon="mdi-lock" required></v-text-field>
-                    <v-btn type="submit" style="background-color:cornsilk;" block > 비밀번호 변경하기 </v-btn>
-                    <v-btn @click="closeModal" style="background-color:aliceblue;" block > 닫기 </v-btn>
+                    <v-btn type="submit" color="primary" block class="mb-2"> 비밀번호 변경하기 </v-btn>
+                    <v-btn @click="closeModal" variant="outlined" color="secondary" block > 닫기 </v-btn>
                 </v-form>
             </v-card-text>
         </v-card>

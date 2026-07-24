@@ -4,12 +4,13 @@
   <!-- router-view를 통해 app.vue에서 화면 라우팅 -->
   <v-app>
     <HeaderComponent />
-    
+
     <v-main>
       <router-view />
     </v-main>
+
+    <FooterComponent />
   </v-app>
-  <FooterComponent />
 </template>
 
 <!-- tepmlate에서는 html코드가 들어가고, script에는 js코드가 들어감, 디자인은 style안에 들어감 -->

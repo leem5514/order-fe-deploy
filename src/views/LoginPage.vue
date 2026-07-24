@@ -1,37 +1,39 @@
 <template>
 
-    <v-container>
-        <v-row justify="center">
-            <!--화면크기가 small 이상(스마트폰, 태블릿)일 때 : sm -->
-            <!-- 화면크기가 medium 이상(데스크탑)일 때 : md -->
-            <v-col cols="12" sm="2" md="4">
-                <v-card>
-                    <v-card-title class="text-h5 text-center">로그인</v-card-title>
-                    <v-card-text>
-                        <v-form @submit.prevent="doLogin">
+    <v-container class="fill-height" style="max-width:480px;">
+        <v-row justify="center" class="w-100">
+            <v-col cols="12">
+                <div class="text-center mb-6">
+                    <div class="section-eyebrow">WELCOME BACK</div>
+                    <h1 class="text-h5 font-weight-bold mt-2">로그인</h1>
+                    <p class="text-body-2 text-medium-emphasis mt-1">이메일과 비밀번호를 입력해주세요</p>
+                </div>
+                <v-card class="pa-6" variant="flat" border>
+                    <v-form @submit.prevent="doLogin">
 
-                            <v-text-field label="email" v-model="email" type="email" prepend-icon="mdi-email" required>
-                            </v-text-field>
-                            <v-text-field label="비밀번호" v-model="password" type="password" required
-                                prepend-icon="mdi-lock">
-                            </v-text-field>
-                            <v-row>
-                                <v-col>
-                                    <v-btn color="red" block @click="showPassWordModal">비밀번호 변경</v-btn>
-                                </v-col>
-                                <v-col cols="6">
-                                    <v-btn type="submit" color="primary" block>로그인</v-btn>
-                                </v-col>
+                        <v-text-field label="이메일" v-model="email" type="email" prepend-inner-icon="mdi-email-outline" required>
+                        </v-text-field>
+                        <v-text-field label="비밀번호" v-model="password" type="password" required
+                            prepend-inner-icon="mdi-lock-outline">
+                        </v-text-field>
 
-                            </v-row>
-                        </v-form>
-                    </v-card-text>
+                        <v-btn type="submit" color="primary" block size="large" class="mt-2">로그인</v-btn>
+
+                        <div class="text-center mt-4">
+                            <a class="text-link" @click="showPassWordModal">비밀번호를 잊으셨나요?</a>
+                        </div>
+                    </v-form>
                 </v-card>
+
+                <div class="text-center mt-6 text-body-2 text-medium-emphasis">
+                    아직 계정이 없으신가요?
+                    <router-link to="/member/create" class="text-link">회원가입</router-link>
+                </div>
             </v-col>
         </v-row>
 
         <!-- resetPassword가 true가 될 째 해당 모달창이 보여짐 -->
-        <!-- @update:dialog는 modal 컴포넌트가 update:dialog라는 이벤트를 발생시킬 때 실행할 이벤트 핸들러를 정의함 -->
+        <!-- @update:dialog는 모달 컴포넌트가 update:dialog라는 이벤트를 발생시킬 때 실행할 이벤트 핸들러를 정의함 -->
         <!-- $event는 자식요소로부터 전달된 값: true/false가 모달로부터 전달 -->
         <ResetPasswordModal v-model="resetPassword" @update:dialog="resetPassword = $event"></ResetPasswordModal>
     </v-container>
@@ -89,3 +91,13 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.text-link {
+    color: #141414;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+</style>

@@ -1,30 +1,33 @@
 <template>
 
-    <v-container>
+    <v-container class="py-10" style="max-width:560px;">
         <v-row justify="center">
-            <!--화면크기가 small 이상(스마트폰, 태블릿)일 때 : sm -->
-            <!-- 화면크기가 medium 이상(데스크탑)일 때 : md -->
-            <v-col cols="12" sm="4" md="6">
-                <v-card>
-                    <v-card-title class="text-h5 text-center">회원가입</v-card-title>
-                    <v-card-text>
-                        <v-form @submit.prevent="memberCreate">
-                            <v-text-field label="이름" v-model="name" prepend-icon="mdi-account" required>
-                            </v-text-field>
-                            <v-text-field label="email" v-model="email" type="email" prepend-icon="mdi-email" required>
-                            </v-text-field>
-                            <v-text-field label="비밀번호" v-model="password" type="password" required
-                                prepend-icon="mdi-lock">
-                            </v-text-field>
-                            <v-text-field label="도시" v-model="city" prepend-icon="mdi-city"></v-text-field>
-                            <v-text-field label="상세주소" v-model="street" prepend-icon="mdi-home"></v-text-field>
-                            <v-text-field label="우편변호" v-model="zipcode" prepend-icon="mdi-mailbox"></v-text-field>
+            <v-col cols="12">
+                <div class="text-center mb-6">
+                    <div class="section-eyebrow">JOIN US</div>
+                    <h1 class="text-h5 font-weight-bold mt-2">회원가입</h1>
+                    <p class="text-body-2 text-medium-emphasis mt-1">몇 가지 정보만 입력하면 가입이 완료돼요</p>
+                </div>
+                <v-card class="pa-6" variant="flat" border>
+                    <v-form @submit.prevent="memberCreate">
+                        <div class="section-eyebrow mb-3">계정 정보</div>
+                        <v-text-field label="이름" v-model="name" prepend-inner-icon="mdi-account-outline" required>
+                        </v-text-field>
+                        <v-text-field label="이메일" v-model="email" type="email" prepend-inner-icon="mdi-email-outline" required>
+                        </v-text-field>
+                        <v-text-field label="비밀번호" v-model="password" type="password" required
+                            prepend-inner-icon="mdi-lock-outline">
+                        </v-text-field>
 
-                            <!-- block은 부모 컨테이너 너비만큼을 꽉 채우는 것 -->
-                            <v-btn type="submit" color="primary" block>등록</v-btn>
+                        <div class="section-eyebrow mb-3 mt-2">배송지 정보</div>
+                        <v-text-field label="도시" v-model="city" prepend-inner-icon="mdi-city-variant-outline"></v-text-field>
+                        <v-text-field label="상세주소" v-model="street" prepend-inner-icon="mdi-home-outline"></v-text-field>
+                        <v-text-field label="우편번호" v-model="zipcode" prepend-inner-icon="mdi-mailbox-outline"></v-text-field>
 
-                        </v-form>
-                    </v-card-text>
+                        <!-- block은 부모 컨테이너 너비만큼을 꽉 채우는 것 -->
+                        <v-btn type="submit" color="primary" block size="large" class="mt-2">회원가입</v-btn>
+
+                    </v-form>
                 </v-card>
             </v-col>
         </v-row>
