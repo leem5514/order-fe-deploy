@@ -60,7 +60,7 @@ export default{
                     console.log("주문이 취소되었습니다.");
                 }
                 try{
-                    await axios.post(`${process.env.VUE_APP_API_BASE_URL}/order/create`, orderProducts);
+                    await axios.post(`${process.env.VUE_APP_API_BASIC_URL}/order/create`, orderProducts);
                     alert("주문 완료 !")
                     this.clearCart();
                 }

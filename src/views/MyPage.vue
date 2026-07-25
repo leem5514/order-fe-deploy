@@ -38,13 +38,13 @@ export default {
     async created() {
         try {
             const response = await axios.get(`${process.env.VUE_APP_API_BASIC_URL}/member/myInfo`);
-            this.memberInfo = response.data.list;
+            this.memberInfo = response.data.result;
             this.memberInfoList = [
                 { key: "이름", value: this.memberInfo.name },
                 { key: "이메일", value: this.memberInfo.email },
-                { key: "도시", value: this.memberInfo.city },
-                { key: "생년월일", value: this.memberInfo.birthday },
-                { key: "비밀번호", value: this.memberInfo.password }
+                { key: "도시", value: this.memberInfo.address?.city },
+                { key: "상세주소", value: this.memberInfo.address?.street },
+                { key: "우편번호", value: this.memberInfo.address?.zipcode }
             ];
         } catch (error) {
             console.error("Error fetching member info:", error);

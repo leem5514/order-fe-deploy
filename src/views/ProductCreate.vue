@@ -1,13 +1,13 @@
 <template>
     <v-container>
-        <v-row justifys="center">
+        <v-row justify="center">
             <v-col cols="12" md="8">
                 <v-card>
-                    <v-card-title class="text-center text h5">
+                    <v-card-title class="text-center text-h5">
                         상품등록
                     </v-card-title>
                     <v-card-text>
-                        <v-form @submit="prevent = productCreate">
+                        <v-form @submit.prevent="productCreate">
                             <v-text-field
                                 label="상품명"
                                 v-model="name"
@@ -21,19 +21,22 @@
                             <v-text-field
                                 label="가격"
                                 v-model="price"
+                                type="number"
                                 required
                             ></v-text-field>
                             <v-text-field
                                 label="재고수량"
                                 v-model="stockQuantity"
+                                type="number"
                                 required
                             ></v-text-field>
-                            <v-text-input
+                            <v-file-input
                                 label="상품이미지"
+                                v-model="productImage"
                                 accept="image/*"
-                                @change="fileUpdate"
+                                prepend-icon="mdi-camera"
                                 required
-                            ></v-text-input>
+                            ></v-file-input>
                             <v-btn type="submit" color="primary" block>등록</v-btn>
                         </v-form>
                     </v-card-text>
@@ -53,26 +56,29 @@ export default{
             category: "",
             price: null,
             stockQuantity: null,
+            productImage: null,
         }
     },
     methods:{
         async productCreate(){
             try {
+                const image = Array.isArray(this.productImage) ? this.productImage[0] : this.productImage;
+                if (!image) {
+                    alert("상품이미지를 선택해주세요.");
+                    return;
+                }
                 let registerData = new FormData();
                 registerData.append("name", this.name);
                 registerData.append("category", this.category);
                 registerData.append("price", this.price);
                 registerData.append("stockQuantity", this.stockQuantity);
-                registerData.append("productImage", this.productImage);
+                registerData.append("productImage", image);
 
-                await axios.post(`${process.env.VUE_APP_API_BASE_URL}/product/create`, registerData); 
+                await axios.post(`${process.env.VUE_APP_API_BASIC_URL}/product/create`, registerData);
                 this.$router.push('/product/manage');
             } catch (error) {
                 alert("상품 등록에 실패했습니다.");
             }
-        },
-        fileUpdate(event){
-            this.productImage = event.target.files[0]
         }
     }
 }

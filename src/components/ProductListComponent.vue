@@ -143,8 +143,16 @@
       window.removeEventListener('scroll', this.scrollPagination);
     },
     methods: {
-        deleteProduct(productId) {
-            console.log(productId)
+        async deleteProduct(productId) {
+            const yesOrNo = confirm("해당 상품을 삭제하시겠습니까?");
+            if (!yesOrNo) return;
+            try {
+                await axios.delete(`${process.env.VUE_APP_API_BASIC_URL}/product/${productId}`);
+                this.productList = this.productList.filter(p => p.id !== productId);
+            } catch (e) {
+                console.log(e);
+                alert("상품 삭제에 실패했습니다.");
+            }
         },
 
         formatPrice(price) {
