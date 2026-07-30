@@ -151,7 +151,7 @@
                 this.productList = this.productList.filter(p => p.id !== productId);
             } catch (e) {
                 console.log(e);
-                alert("상품 삭제에 실패했습니다.");
+                alert(e.response?.data?.error_message || "상품 삭제에 실패했습니다.");
             }
         },
 

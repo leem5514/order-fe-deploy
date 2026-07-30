@@ -84,6 +84,10 @@
             </template>
         </div>
     </v-navigation-drawer>
+
+    <v-snackbar v-model="cancelSnackbar" color="error" timeout="5000">
+        {{ cancelMessage }}
+    </v-snackbar>
 </template>
 
 <script>
@@ -97,7 +101,9 @@ export default {
             userRole: null,
             isLogin: false,
             liveQuantity: 0,
-            mobileMenu: false
+            mobileMenu: false,
+            cancelSnackbar: false,
+            cancelMessage: ''
         }
     },
     computed: {
@@ -111,14 +117,22 @@ export default {
         }
         //SSemitter
         // 알림의 경우 새로고침을 하면 사라지는 이슈 발생 -> localstorage 에 넣으면 해결 가능
-        if(this.userRole === 'ADMIN') {
+        // 로그인한 사용자라면 누구나 구독 : 관리자는 신규주문(ordered), 구매자 본인은 주문취소(order-cancelled) 알림을 받는다.
+        if (this.isLogin) {
             let sse = new EventSourcePolyfill(`${process.env.VUE_APP_API_BASIC_URL}/subscribe`, {headers: {Authorization: `Bearer ${token}`}});
             sse.addEventListener('connect', (event) => { console.log(event) })
-            sse.addEventListener('ordered', (event) => {
-                 console.log(event.data)
-                 this.liveQuantity ++;
+            if (this.userRole === 'ADMIN') {
+                sse.addEventListener('ordered', (event) => {
+                    console.log(event.data)
+                    this.liveQuantity++;
                 })
-            sse.oneerror = (error) => {
+            }
+            sse.addEventListener('order-cancelled', (event) => {
+                const order = JSON.parse(event.data);
+                this.cancelMessage = `주문(#${order.id})이 취소되었습니다.`;
+                this.cancelSnackbar = true;
+            })
+            sse.onerror = (error) => {
                 console.log(error);
                 sse.close();
             }
